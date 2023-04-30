@@ -14,16 +14,25 @@ const Home = () => {
     const [tag, setTag] = useState('')
     const [tagList, setTagList] = useState([''])
 
+	const quoteIds = JSON.parse(localStorage.getItem("quotes").replace(/\\/g, ""));
+	console.log(quoteIds)
+
     const fetchQuotes = async () => {
 		if (tag == '') {
 			await axios.get('https://api.quotable.io/random')
 				.then(res => {
+					let marked = false
+					quoteIds.map((item) => {
+						if (item == res.data._id) {
+							marked = true
+						}
+					})
 					setCurrentQuote(
 						{
                             id: res.data._id,
 							quote: res.data.content,
 							author: res.data.author,
-							saved: false
+							saved: marked
 						}
 					)
                     console.log(res.data)
@@ -37,14 +46,20 @@ const Home = () => {
 					}
 				})
 		} else {
-			await axios.get(`https://api.quotable.io/quotes?tags=${tag}&page=1`)
+			console.log(tag)
+			await axios.get(`https://api.quotable.io/random?tags=${tag}`)
 				.then(res => {
-					let n = Math.floor(Math.random() * (res.data.count - 1));
+					let marked = false
+					quoteIds.map((item) => {
+						if (item == res.data._id) {
+							marked = true
+						}
+					})
 					setCurrentQuote({
-                        id: res.data.results[n]._id,
-						quote: res.data.results[n].content,
-						author: res.data.results[n].author,
-						saved: false
+                        id: res.data._id,
+						quote: res.data.content,
+						author: res.data.author,
+						saved: marked
 					})
 					console.log(res.data.results)
 				})

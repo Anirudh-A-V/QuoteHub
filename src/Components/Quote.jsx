@@ -18,7 +18,7 @@ const Quote = (props) => {
         return (
             <div className='bg-[#D05252] flex flex-col justify-center items-center h-full w-3/5 pt-9 pb-9 pr-12 pl-12 rounded-3xl'>
                 <div className='text-3xl font-normal text-white flex-wrap text-justify'>
-                    Loading...
+                <div className="custom-loader"></div>
                 </div>
             </div>
         )

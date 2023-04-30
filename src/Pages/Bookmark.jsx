@@ -1,10 +1,19 @@
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import Navbar from '../Components/Navbar'
 import Quote from '../Components/Quote'
-import { useSelector } from 'react-redux'
+import { fetchQuotes } from '../store/quote/quoteSlice'
 
 const Bookmark = () => {
     const quotes = useSelector(state => state.quote.quotes)
+    const dispatch = useDispatch()
     console.log(quotes)
+
+    useEffect(() => {
+        dispatch(fetchQuotes());
+      }, [dispatch]);
+
     return (
         <div className="App flex flex-col w-full justify-start items-center">
             <Navbar bookmark={true} />
