@@ -1,13 +1,16 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Home from "./Pages/Home"
+import Bookmark from "./Pages/Bookmark"
 
 function App() {
-  return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </>
-  )
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/bookmarks" element={<Bookmark />} />
+			</Routes>
+		</BrowserRouter>
+	)
 }
 
 export default App

@@ -6,6 +6,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  background: linear-gradient(256.47deg, #5E2AB3 2.64%, #161E6C 140.46%);
 /* 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -23,4 +24,5 @@
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  border: #ff000f solid 1px !important;
 }
