@@ -14,16 +14,6 @@ const Quote = (props) => {
         setMarked(props.saved)
     }, [props.quote])
 
-    if (props.quote == '' || props.author == '') {
-        return (
-            <div className='bg-[#D05252] flex flex-col justify-center items-center h-full w-3/5 pt-9 pb-9 pr-12 pl-12 rounded-3xl'>
-                <div className='text-3xl font-normal text-white flex-wrap text-justify'>
-                <div className="custom-loader"></div>
-                </div>
-            </div>
-        )
-    }
-
     const handleBookmark = () => {
         if (marked) {
             console.log(quoteList)
@@ -34,6 +24,17 @@ const Quote = (props) => {
             dispatch(addQuote({ id: props.id, quote: props.quote, author: props.author, saved: true }))
             setMarked(true)
         }
+    }
+
+
+    if (props.quote == '' || props.author == '') {
+        return (
+            <div className='bg-[#D05252] flex flex-col justify-center items-center h-full w-3/5 pt-9 pb-9 pr-12 pl-12 rounded-3xl'>
+                <div className='text-3xl font-normal text-white flex-wrap text-justify'>
+                    <div className="custom-loader"></div>
+                </div>
+            </div>
+        )
     }
 
 
@@ -49,9 +50,9 @@ const Quote = (props) => {
                 </div>
                 <div onClick={handleBookmark}>
                     {marked ?
-                        <BsFillBookmarkCheckFill className='text-xl text-white cursor-pointer'/>
+                        <BsFillBookmarkCheckFill className='text-xl text-white cursor-pointer' />
                         :
-                        <BsFillBookmarkPlusFill className='text-xl text-white cursor-pointer'/>
+                        <BsFillBookmarkPlusFill className='text-xl text-white cursor-pointer' />
                     }
                 </div>
             </div>

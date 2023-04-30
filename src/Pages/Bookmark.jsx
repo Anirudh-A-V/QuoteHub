@@ -12,13 +12,13 @@ const Bookmark = () => {
 
     useEffect(() => {
         dispatch(fetchQuotes());
-      }, [dispatch]);
+    }, [dispatch]);
 
     return (
         <div className="App flex flex-col w-full justify-start items-center">
             <Navbar bookmark={true} />
             <div className='mt-14'></div>
-            {quotes ?
+            {quotes && quotes.length > 0 ?
                 quotes.map((quote, index) => {
                     return (
                         <div className="flex flex-col justify-center items-center h-full w-full my-3" key={index}>
