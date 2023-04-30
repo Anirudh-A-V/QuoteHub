@@ -14,8 +14,7 @@ const Home = () => {
     const [tag, setTag] = useState('')
     const [tagList, setTagList] = useState([''])
 
-	const Q_ids = localStorage.getItem("quotes")
-	if (Q_ids == null) {
+	if (localStorage.getItem("quotes") == null) {
 		localStorage.setItem("quotes", JSON.stringify([]))
 	}
 	const quoteIds = JSON.parse(localStorage.getItem("quotes").replace(/\\/g, ""));

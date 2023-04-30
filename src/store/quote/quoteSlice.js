@@ -29,8 +29,7 @@ export const { addQuote, removeQuote, setQuotes } = quoteSlice.actions;
 export const fetchQuotes = () => {
     return async (dispatch) => {
         try {
-            const Q_ids = localStorage.getItem("quotes")
-            if (Q_ids == null) {
+            if (localStorage.getItem("quotes") == null) {
                 localStorage.setItem("quotes", JSON.stringify([]))
             }
             const ids = JSON.parse(localStorage.getItem("quotes").replace(/\\/g, ""));

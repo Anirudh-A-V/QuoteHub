@@ -12,7 +12,7 @@ const Bookmark = () => {
 
     useEffect(() => {
         dispatch(fetchQuotes());
-      }, [dispatch]);
+    }, [dispatch]);
 
     return (
         <div className="App flex flex-col w-full justify-start items-center">
