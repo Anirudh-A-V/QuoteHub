@@ -27,6 +27,7 @@ const Home = () => {
 						}
 					)
                     console.log(res.data)
+					console.log(currentQuote)
 				})
 				.catch(err => {
 					if (err.name === 'AbortError') {
@@ -75,13 +76,13 @@ const Home = () => {
 	}, [])
 
     return (
-        <div className="App flex flex-col w-full justify-start items-center">
+        <div className="App flex flex-col max-sm:min-h-screen min-h-screen w-full justify-start items-center">
             <Navbar bookmark={false}/>
             <div className='mt-[100px] mb-16 flex items-center justify-center w-full'>
                 <Quote quote={currentQuote.quote} author={currentQuote.author} saved={currentQuote.saved} id={currentQuote.id} />
             </div>
             <div className='flex mb-10'>
-                <select className='p-2 rounded-md min-w-max' value={tag} onChange={(e) => {
+                <select className='p-2 rounded-md min-w-max border-gray-300 focus:outline-none focus:ring focus:border-blue-300' value={tag} onChange={(e) => {
                     setTag(e.target.value)
                     console.log(e.target.value)
                 }} >
@@ -90,7 +91,7 @@ const Home = () => {
                     )}
                 </select>
             </div>
-            <div className='flex items-center justify-center cursor-pointer pt-3 pb-3 pl-9 pr-9 bg-[#009C51] text-2xl font-normal text-white rounded-3xl hover:bg-green-600'
+            <div className='flex items-center justify-center cursor-pointer pt-3 pb-3 pl-9 pr-9 bg-[#009C51] text-2xl font-normal text-white rounded-3xl hover:bg-green-600 mb-16 '
                 onClick={fetchQuotes}
             >
                 Next Quote

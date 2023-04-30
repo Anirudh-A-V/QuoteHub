@@ -26,3 +26,33 @@
   scroll-behavior: smooth;
   /* border: #ff000f solid 1px !important; */
 }
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #5E2AB3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5626a4;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8800ff;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #8800ff;
+}
+
+::-webkit-scrollbar-corner {
+  background: #5E2AB3;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}

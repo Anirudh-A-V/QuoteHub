@@ -22,6 +22,7 @@ const Bookmark = () => {
                     <h2 className="text-3xl font-bold text-white">No Bookmarks</h2>
                 </div>
             }
+            <div className='mb-10'></div>
         </div>
     )
 }
