@@ -1,8 +1,13 @@
 import { useState } from 'react'
 import { BsFillBookmarkPlusFill, BsFillBookmarkCheckFill } from "react-icons/bs";
+import { useDispatch, useSelector } from 'react-redux';
+
+import { addQuote, removeQuote } from '../store/quote/quoteSlice';
 
 const Quote = (props) => {
-    const [marked, setMarked] = useState(false)
+    const dispatch = useDispatch()
+    const quoteList = useSelector(state => state.quote.quotes)
+    const [marked, setMarked] = useState(props.saved)
 
     if (props.quote == '' || props.author == '') {
         return (
@@ -12,6 +17,18 @@ const Quote = (props) => {
                 </div>
             </div>
         )
+    }
+
+    const handleBookmark = () => {
+        if (marked) {
+            console.log(quoteList)
+            dispatch(removeQuote(props.id))
+            setMarked(false)
+        } else {
+            console.log(quoteList)
+            dispatch(addQuote({ id: props.id, quote: props.quote, author: props.author, saved: true }))
+            setMarked(true)
+        }
     }
 
 
@@ -25,11 +42,11 @@ const Quote = (props) => {
                 <div className='text-xl font-bold text-white'>
                     {props.author}
                 </div>
-                <div>
+                <div onClick={handleBookmark}>
                     {marked ?
-                        <BsFillBookmarkCheckFill className='text-xl text-white cursor-pointer' onClick={() => setMarked(!marked)} />
+                        <BsFillBookmarkCheckFill className='text-xl text-white cursor-pointer'/>
                         :
-                        <BsFillBookmarkPlusFill className='text-xl text-white cursor-pointer' onClick={() => setMarked(!marked)} />
+                        <BsFillBookmarkPlusFill className='text-xl text-white cursor-pointer'/>
                     }
                 </div>
             </div>

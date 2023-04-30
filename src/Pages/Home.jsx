@@ -6,7 +6,8 @@ import Quote from '../Components/Quote'
 
 const Home = () => {
     const [currentQuote, setCurrentQuote] = useState({
-        content: '',
+        id: '',
+        quote: '',
         author: '',
         saved: false
     })
@@ -19,11 +20,13 @@ const Home = () => {
 				.then(res => {
 					setCurrentQuote(
 						{
-							content: res.data.content,
+                            id: res.data._id,
+							quote: res.data.content,
 							author: res.data.author,
 							saved: false
 						}
 					)
+                    console.log(res.data)
 				})
 				.catch(err => {
 					if (err.name === 'AbortError') {
@@ -37,7 +40,8 @@ const Home = () => {
 				.then(res => {
 					let n = Math.floor(Math.random() * (res.data.count - 1));
 					setCurrentQuote({
-						content: res.data.results[n].content,
+                        id: res.data.results[n]._id,
+						quote: res.data.results[n].content,
 						author: res.data.results[n].author,
 						saved: false
 					})
@@ -74,7 +78,7 @@ const Home = () => {
         <div className="App flex flex-col w-full justify-start items-center">
             <Navbar bookmark={false}/>
             <div className='mt-[100px] mb-16 flex items-center justify-center w-full'>
-                <Quote quote={currentQuote.content} author={currentQuote.author} saved={currentQuote.saved} />
+                <Quote quote={currentQuote.quote} author={currentQuote.author} saved={currentQuote.saved} id={currentQuote.id} />
             </div>
             <div className='flex mb-10'>
                 <select className='p-2 rounded-md min-w-max' value={tag} onChange={(e) => {
